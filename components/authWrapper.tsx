@@ -49,7 +49,6 @@ export default function AuthWrapper({
                   {" "}
                   {queryTitle}
                 </NextLink>
-                .
               </p>
             </form>
           </div>

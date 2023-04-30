@@ -19,7 +19,7 @@ export default function NavBar() {
           />
         </div>
         <div className="btn-group btn-group-vertical lg:btn-group-horizontal">
-          <button className="btn btn-active">Register</button>
+          <button className="btn btn-active" onClick={() => router.push("/register")}>Register</button>
           <button className="btn" onClick={() => router.push("/login")}>
             Login
           </button>

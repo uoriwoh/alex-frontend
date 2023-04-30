@@ -1,10 +1,15 @@
 const baseurl = "http://localhost:3333/";
 
-type DataProps =
-  | {
-      name: string;
-    }
-  | undefined;
+type RegisterProps = {
+  firstName: string; lastName: string; email: string; department: string; password: string
+}
+
+type LoginProps = {
+  email: string;
+  password: string;
+}
+
+type DataProps = RegisterProps | LoginProps | undefined
 
 export async function fetcher(url: string, data: DataProps = undefined) {
   try {
