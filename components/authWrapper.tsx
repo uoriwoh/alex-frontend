@@ -2,6 +2,7 @@ import NextLink from "next/link";
 
 type AuthType = {
   children: React.ReactNode;
+  loading: boolean;
   header: string;
   title: string;
   query: string;
@@ -17,6 +18,7 @@ export default function AuthWrapper({
   query,
   queryLink,
   queryTitle,
+  loading,
   action,
 }: AuthType) {
   return (
@@ -32,13 +34,20 @@ export default function AuthWrapper({
             <form action="">
               {children}
               <div className="my-6">
-                <button
-                  type="submit"
-                  className="w-full rounded-md bg-black px-3 py-4 text-white focus:bg-gray-600 focus:outline-none"
-                  onClick={action}
-                >
-                  {header}
-                </button>
+                {loading && (
+                  <button className="btn loading w-full rounded-md bg-black px-3 py-4 text-white h-14">
+                    loading
+                  </button>
+                )}
+                {loading || (
+                  <button
+                    type="submit"
+                    className="w-full rounded-md bg-black px-3 py-4 text-white focus:bg-gray-600 focus:outline-none h-14"
+                    onClick={action}
+                  >
+                    {header}
+                  </button>
+                )}
               </div>
               <p className="text-center text-sm text-gray-500">
                 {query}

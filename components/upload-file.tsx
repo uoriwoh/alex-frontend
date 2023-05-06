@@ -1,9 +1,6 @@
 export default function UploadFile() {
   async function imageAction(e: any) {
     e.preventDefault();
-    // setImage(e.target[0].files[0]);
-
-    // console.log(image);
 
     const formData = new FormData();
     formData.append("file", e.target[0].files[0]);
