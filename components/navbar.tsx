@@ -1,22 +1,18 @@
 import Image from "next/image";
-import { useState } from "react";
 import NextLink from "next/link";
-import { useSWRConfig } from "swr";
 import { useRouter } from "next/router";
 import { useUser } from "@/lib/hooks";
 import { fetcher } from "@/lib/lib";
 
 export default function NavBar() {
   const router = useRouter();
-  const [state, setState] = useState(false);
   const { data } = useUser();
-  const { mutate } = useSWRConfig();
 
   async function logout() {
     await fetcher("auth/logout");
     if (window.location.pathname === "/") {
-      setState(true);
-      mutate("post/all-posts");
+      router.push("/login");
+      setTimeout(() => router.push("/"), 300);
       return;
     }
     router.push("/");
@@ -26,25 +22,22 @@ export default function NavBar() {
     <div className="navbar bg-base-100 flex justify-between md:flex-row flex-col">
       <div className="flex justify-between gap-2 pt-3 md: md:gap-28">
         <div>
-          <div className="">
-            <NextLink href="/" className="btn btn-ghost normal-case text-xl">
+          <div>
+            <NextLink
+              href="/"
+              className="btn btn-ghost normal-case text-3xl font-bold"
+            >
               News Feed
             </NextLink>
           </div>
         </div>
-        <div className="form-control">
-          {/* <input
-            type="text"
-            placeholder="Search News"
-            className="input input-bordered"
-          /> */}
-        </div>
+        <div className="form-control"></div>
       </div>
-      {!data?.message?.userId || state === true ? (
+      {!data?.message?.userId ? (
         <div className="flex-none gap-2 order-first md:order-last">
           <div className="btn-group btn-group-horizontal">
             <button
-              className="btn btn-active"
+              className="btn bg-green-400 text-black hover:bg-black hover:text-green-400"
               onClick={() => router.push("/register")}
             >
               Register

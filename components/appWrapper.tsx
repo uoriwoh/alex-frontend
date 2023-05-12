@@ -1,10 +1,10 @@
 import NavBar from "./navbar";
 
-export default function AppWrapper({
-  children,
-}: {
+type AppWrapperProps = {
   children: React.ReactNode;
-}) {
+};
+
+export default function AppWrapper({ children }: AppWrapperProps) {
   return (
     <main>
       <NavBar />

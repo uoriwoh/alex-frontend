@@ -5,6 +5,8 @@ import { usePosts } from "@/lib/hooks";
 
 export default function MyPosts() {
   const { data } = usePosts();
+
+  console.log(data?.message);
   return (
     <div className="relative flex justify-center hero bg-base-200">
       {data?.statusCode === 200 && (
@@ -19,6 +21,8 @@ export default function MyPosts() {
                   content={item.content}
                   imageUrl={item.imageUrl}
                   userID={item.authorId}
+                  firstName={item.author.firstName}
+                  lastName={item.author.lastName}
                 />
               ))
               .reverse()

@@ -12,12 +12,16 @@ export default function NewsCard({
   imageUrl,
   postId,
   userID,
+  firstName,
+  lastName,
 }: {
   title: string;
   content: string;
   imageUrl: string;
   postId: number;
   userID: string;
+  firstName: string;
+  lastName: string;
 }) {
   const [show, setShow] = useState(false);
   const { data } = useComments();
@@ -69,6 +73,12 @@ export default function NewsCard({
           />
         </figure>
       )}
+      <div className="pl-7 pt-3 flex gap-2">
+        <p className="font-bold">Created by: </p>
+        <p>
+          {firstName} {lastName}
+        </p>
+      </div>
       <div className="card-body flex flex-col items-center w-200">
         <h2 className="card-title">{title}</h2>
         <div className="">

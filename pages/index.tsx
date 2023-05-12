@@ -20,6 +20,8 @@ export default function Home() {
                 content={item.content}
                 imageUrl={item.imageUrl}
                 userID={item.authorId}
+                firstName={item.author?.firstName}
+                lastName={item.author?.lastName}
               />
             ))
             .reverse()}

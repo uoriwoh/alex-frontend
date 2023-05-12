@@ -42,7 +42,7 @@ export default function AuthWrapper({
                 {loading || (
                   <button
                     type="submit"
-                    className="w-full rounded-md bg-black px-3 py-4 text-white focus:bg-gray-600 focus:outline-none h-14"
+                    className="w-full rounded-md bg-green-400 px-3 py-4 text-black font-bold h-14"
                     onClick={action}
                   >
                     {header}

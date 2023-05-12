@@ -1,14 +1,5 @@
 import useSWR from "swr";
-import { fetcher, DataProps } from "./lib";
-
-// export function usePosts(pageDetails: DataProps) {
-//   const { data, mutate, error, isLoading } = useSWR(
-//     ["post/get-user-posts", pageDetails],
-//     ([url, pageDetails]) => fetcher(url, pageDetails)
-//   );
-
-//   return { data, error, isLoading, mutate };
-// }
+import { fetcher } from "./lib";
 
 export function usePosts() {
   const { data, mutate, error, isLoading } = useSWR(
