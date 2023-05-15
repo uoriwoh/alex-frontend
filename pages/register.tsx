@@ -17,6 +17,12 @@ export default function Register() {
 
   async function action(e: React.MouseEvent<HTMLElement>) {
     e.preventDefault();
+
+    if (email.slice(-14) !== "@udusok.edu.ng") {
+      setError("Only emails ending with @udusok.edu.ng is allowed");
+      return;
+    }
+
     setError("");
     setSuccess("");
     if (
@@ -99,9 +105,9 @@ export default function Register() {
         className="input w-full mt-5"
         onChange={(e) => setConfirmPassword(e.target.value)}
       />
-      {error && <p className="mt-5 text-center">{error}</p>}
+      {error && <p className="mt-5 text-center text-red-400">{error}</p>}
       {success && (
-        <p className="mt-5 text-center">
+        <p className="mt-5 text-center text-green-400">
           {success}
           <NextLink
             href="/login"

@@ -41,8 +41,7 @@ export default function NewsCard({
     mutate("post/all-posts");
   }
 
-  const check =
-    user?.message?.userId === userID || user?.message?.role === "Admin";
+  const check = user?.message?.id === userID || user?.message?.role === "Admin";
 
   return (
     <div className="card bg-base-100 shadow-xl mb-7 relative">
@@ -132,7 +131,7 @@ export default function NewsCard({
                         <p>{item.content}</p>
                       </div>
                     </div>
-                    {user?.message?.userId === item.author.id ||
+                    {user?.message?.id === item.author.id ||
                     user?.message?.role === "Admin" ? (
                       <label
                         htmlFor={`my-modal-Comment${item.id}`}

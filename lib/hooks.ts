@@ -15,8 +15,8 @@ export function useComments() {
 }
 
 export function useUser() {
-  const { data } = useSWR("auth/get-user", fetcher);
-  return { data };
+  const { data, isLoading } = useSWR("auth/get-user", fetcher);
+  return { data, isLoading };
 }
 
 export function useAllPosts() {

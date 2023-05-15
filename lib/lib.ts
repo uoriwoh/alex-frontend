@@ -26,12 +26,27 @@ type deleteUserProps = {
   id: string;
 };
 
+type editFirstNameProp = {
+  newFName: string;
+};
+
+type editLastNameProp = {
+  newLName: string;
+};
+
+type editDeptProp = {
+  newDept: string;
+};
+
 export type DataProps =
   | RegisterProps
   | LoginProps
   | PostCommentProps
   | DeleteCommentProps
   | deleteUserProps
+  | editFirstNameProp
+  | editLastNameProp
+  | editDeptProp
   | undefined;
 
 export async function fetcher(url: string, data: DataProps = undefined) {
@@ -53,6 +68,14 @@ export async function fetcher(url: string, data: DataProps = undefined) {
 
 export async function upload(formData: any) {
   await fetch("http://localhost:3333/post/upload", {
+    method: "post",
+    credentials: "include",
+    body: formData,
+  });
+}
+
+export async function uploadProfilePic(formData: any) {
+  await fetch("http://localhost:3333/auth/upload-image", {
     method: "post",
     credentials: "include",
     body: formData,

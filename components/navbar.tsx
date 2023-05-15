@@ -10,11 +10,6 @@ export default function NavBar() {
 
   async function logout() {
     await fetcher("auth/logout");
-    if (window.location.pathname === "/") {
-      router.push("/login");
-      setTimeout(() => router.push("/"), 300);
-      return;
-    }
     router.push("/");
   }
 
@@ -33,7 +28,7 @@ export default function NavBar() {
         </div>
         <div className="form-control"></div>
       </div>
-      {!data?.message?.userId ? (
+      {!data?.message?.id ? (
         <div className="flex-none gap-2 order-first md:order-last">
           <div className="btn-group btn-group-horizontal">
             <button
@@ -74,6 +69,11 @@ export default function NavBar() {
                 <NextLink href="/my-posts">My Posts</NextLink>
               </li>
             )} */}
+            {data?.message?.role === "User" && (
+              <li>
+                <NextLink href="/profile">Profile</NextLink>
+              </li>
+            )}
             {data?.message?.role === "Admin" && (
               <li>
                 <NextLink href="/all-users">Users</NextLink>

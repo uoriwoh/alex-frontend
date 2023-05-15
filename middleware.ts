@@ -26,4 +26,11 @@ export default function middleware(req: NextRequest) {
       return NextResponse.redirect(url);
     }
   }
+
+  if (activePath === "/") {
+    if (token === `"${"Admin"}"` || token === `"${"User"}"`) {
+      url.pathname = "/home";
+      return NextResponse.redirect(url);
+    }
+  }
 }

@@ -34,7 +34,7 @@ export default function Login() {
     }
     setLoading(false);
 
-    router.push("/");
+    router.push("/home");
   }
 
   return (

@@ -5,8 +5,6 @@ import { usePosts } from "@/lib/hooks";
 
 export default function MyPosts() {
   const { data } = usePosts();
-
-  console.log(data?.message);
   return (
     <div className="relative flex justify-center hero bg-base-200">
       {data?.statusCode === 200 && (

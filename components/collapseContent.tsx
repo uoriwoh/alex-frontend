@@ -30,7 +30,7 @@ export default function CollapseContent({
         <HiChatBubbleLeft className="w-6 h-6" />
       </div>
       <div className="collapse-content w-full">
-        {data?.message?.userId && (
+        {data?.message?.id && (
           <div className="flex gap-2">
             <input
               type="text"

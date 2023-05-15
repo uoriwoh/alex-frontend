@@ -1,11 +1,8 @@
 import NewsCard from "@/components/newCard";
-import { useAllPosts, useUser } from "@/lib/hooks";
-import AddPostButton from "@/components/addPostButton";
-import AddNewsModal from "@/components/addPostModal";
+import { useAllPosts } from "@/lib/hooks";
 
-export default function Home() {
+export default function Index() {
   const { data } = useAllPosts();
-  const { data: user } = useUser();
 
   return (
     <main className="relative flex justify-center hero bg-base-200">
@@ -25,13 +22,6 @@ export default function Home() {
               />
             ))
             .reverse()}
-
-          {user?.message?.userId && (
-            <div>
-              <AddPostButton />
-              <AddNewsModal />
-            </div>
-          )}
         </div>
       )}
     </main>
