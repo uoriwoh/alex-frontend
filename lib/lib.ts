@@ -1,4 +1,5 @@
-const baseurl = "http://localhost:3333/";
+import { getCookie } from "cookies-next";
+export const baseurl = "http://localhost:3333/";
 
 type RegisterProps = {
   firstName: string;
@@ -49,12 +50,15 @@ export type DataProps =
   | editDeptProp
   | undefined;
 
+export const token = getCookie('token')
 export async function fetcher(url: string, data: DataProps = undefined) {
+  const token = getCookie('token')
   const res = await fetch(`${baseurl}${url}`, {
     method: data ? "POST" : "GET",
     credentials: "include",
     headers: {
       "Content-Type": "application/json",
+      'Authorization': `Bearer ${token}`
     },
     body: JSON.stringify(data),
   });
@@ -67,17 +71,31 @@ export async function fetcher(url: string, data: DataProps = undefined) {
 }
 
 export async function upload(formData: any) {
-  await fetch("http://localhost:3333/post/upload", {
+  await fetch(`${baseurl}post/upload`, {
     method: "post",
     credentials: "include",
     body: formData,
+    headers: {
+      'Authorization': `Bearer ${token}`
+    },
   });
 }
 
 export async function uploadProfilePic(formData: any) {
-  await fetch("http://localhost:3333/auth/upload-image", {
+  await fetch(`${baseurl}auth/upload-image`, {
     method: "post",
     credentials: "include",
     body: formData,
+    headers: {
+      'Authorization': `Bearer ${token}`
+    },
   });
+}
+
+export async function fetchPosts(tracker: number) {
+  const { data, totalNum } = (await fetcher(`post/all-posts?id=${tracker}`))
+    .message;
+
+  return { data, totalNum };
+  // return (await fetcher(`post/all-posts?id=${tracker}`)).message.data;
 }

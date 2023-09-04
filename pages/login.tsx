@@ -1,5 +1,5 @@
 import { useState } from "react";
-import NextLink from "next/link";
+import { setCookie, getCookie } from "cookies-next";
 import AuthWrapper from "@/components/authWrapper";
 import { fetcher } from "@/lib/lib";
 import { useRouter } from "next/router";
@@ -26,12 +26,14 @@ export default function Login() {
 
     setLoading(true);
     const { message, statusCode } = await fetcher("auth/login", state);
-
     if (statusCode !== 201) {
       setLoading(false);
       setError(message);
       return;
     }
+
+    setCookie("token", message.access_token);
+
     setLoading(false);
 
     router.push("/home");
@@ -64,4 +66,4 @@ export default function Login() {
   );
 }
 
-Login.authPage = true;
+Login.prototype.authPage = true;

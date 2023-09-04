@@ -1,35 +1,36 @@
 import Image from "next/image";
 import NextLink from "next/link";
+import { deleteCookie } from "cookies-next";
 import { useRouter } from "next/router";
 import { useUser } from "@/lib/hooks";
-import { fetcher } from "@/lib/lib";
 
 export default function NavBar() {
   const router = useRouter();
   const { data } = useUser();
 
+  function clearCookie() {
+    return new Promise((res) => {
+      res(deleteCookie("token"));
+    });
+  }
+
   async function logout() {
-    await fetcher("auth/logout");
+    await clearCookie();
     router.push("/");
   }
 
   return (
-    <div className="navbar bg-base-100 flex justify-between md:flex-row flex-col">
-      <div className="flex justify-between gap-2 pt-3 md: md:gap-28">
-        <div>
-          <div>
-            <NextLink
-              href="/"
-              className="btn btn-ghost normal-case text-3xl font-bold"
-            >
-              News Feed
-            </NextLink>
-          </div>
-        </div>
-        <div className="form-control"></div>
+    <div className="navbar bg-base-100 flex justify-between">
+      <div>
+        <NextLink
+          href="/"
+          className="btn btn-ghost normal-case text-3xl font-bold"
+        >
+          News Feed
+        </NextLink>
       </div>
       {!data?.message?.id ? (
-        <div className="flex-none gap-2 order-first md:order-last">
+        <div className="flex-none gap-2">
           <div className="btn-group btn-group-horizontal">
             <button
               className="btn bg-green-400 text-black hover:bg-black hover:text-green-400"

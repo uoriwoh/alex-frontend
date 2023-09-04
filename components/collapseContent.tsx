@@ -26,10 +26,10 @@ export default function CollapseContent({
   return (
     <div className="collapse">
       <input type="checkbox" />
-      <div className="collapse-title w-200">
+      <div className="collapse-title">
         <HiChatBubbleLeft className="w-6 h-6" />
       </div>
-      <div className="collapse-content w-full">
+      <div className="collapse-content">
         {data?.message?.id && (
           <div className="flex gap-2">
             <input

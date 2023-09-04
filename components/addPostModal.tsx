@@ -55,6 +55,7 @@ export default function AddNewsModal() {
               placeholder="Type here"
               className="input input-bordered input-primary w-full max-w-xs"
               onChange={(e) => setTitle(e.target.value)}
+              value={title}
             />
           </div>
           <div className="flex justify-center items-center gap-3">
@@ -63,6 +64,7 @@ export default function AddNewsModal() {
               className="textarea textarea-accent w-full"
               placeholder="Content here"
               onChange={(e) => setContent(e.target.value)}
+              value={content}
             ></textarea>
           </div>
           <div className="flex justify-center items-center gap-3">

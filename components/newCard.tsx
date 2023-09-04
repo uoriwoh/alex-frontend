@@ -6,6 +6,7 @@ import Image from "next/image";
 import CollapseContent from "./collapseContent";
 import WarningModal from "./warningModal";
 import { fetcher } from "@/lib/lib";
+
 export default function NewsCard({
   title,
   content,
@@ -44,7 +45,7 @@ export default function NewsCard({
   const check = user?.message?.id === userID || user?.message?.role === "Admin";
 
   return (
-    <div className="card bg-base-100 shadow-xl mb-7 relative">
+    <div className="card bg-base-100 shadow-xl mb-7 relative md:mx-40">
       {check && (
         <div>
           <label
@@ -78,8 +79,8 @@ export default function NewsCard({
           {firstName} {lastName}
         </p>
       </div>
-      <div className="card-body flex flex-col items-center w-200">
-        <h2 className="card-title">{title}</h2>
+      <div className="card-body flex flex-col items-center">
+        <h2 className="card-title text-center">{title}</h2>
         <div className="">
           {show || (
             <div>
@@ -106,7 +107,8 @@ export default function NewsCard({
         {/* Add a line here */}
         <div className="w-full border-1"></div>
         {/* <div className="divider w-full"></div> */}
-        <div className="flex flex-start">
+        {/* Comment section: */}
+        <div className="w-full">
           <CollapseContent postId={postId}>
             {filtered?.length !== 0 ? (
               filtered

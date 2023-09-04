@@ -121,4 +121,4 @@ export default function Register() {
   );
 }
 
-Register.authPage = true;
+Register.prototype.authPage = true;

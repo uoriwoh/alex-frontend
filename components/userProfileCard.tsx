@@ -130,7 +130,7 @@ export default function UserProfileCard({
         />
       </figure>
       <form
-        className="p-3 flex justify-center items-center gap-1"
+        className="flex justify-center items-center gap-1 mx-10 md:mx-0 mb-4"
         onSubmit={uploadImage}
       >
         <p className="font-bold">Change Image:</p>
@@ -145,7 +145,7 @@ export default function UserProfileCard({
           className="p-1 rounded-lg border border-black font-semibold cursor-pointer"
         />
       </form>
-      <div className="flex flex-col gap-2 p-3">
+      <div className="flex flex-col gap-2 mx-10 md:mx-0">
         <div className="flex gap-4 items-center">
           <p>First Name:</p>
           {editingFName ? (
