@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import * as jose from 'jose';
 
 async function verifyJWT(token: any) {
-  const secret = new TextEncoder().encode('3A1F6D8B4E11A7C8E6D3F5B2A9C0E7F8')
+  const secret = new TextEncoder().encode(process.env.JWT_SECRET)
   try {
     const { payload } = await jose.jwtVerify(token, secret, { algorithms: ["HS256"] })
     return payload.role
