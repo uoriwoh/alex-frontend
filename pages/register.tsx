@@ -15,13 +15,17 @@ export default function Register() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
+  function emptyEntries() {
+    setFirstName("");
+    setLastname("");
+    setEmail("");
+    setPassword("");
+    setConfirmPassword("");
+    setDepartment("");
+  }
+
   async function action(e: React.MouseEvent<HTMLElement>) {
     e.preventDefault();
-
-    if (email.slice(-14) !== "@udusok.edu.ng") {
-      setError("Only emails ending with @udusok.edu.ng is allowed");
-      return;
-    }
 
     setError("");
     setSuccess("");
@@ -55,6 +59,7 @@ export default function Register() {
       setError(result.message);
       return;
     }
+    emptyEntries();
     setSuccess(result.message);
     setLoading(false);
   }
@@ -74,36 +79,42 @@ export default function Register() {
         placeholder="Enter First Name"
         className="input w-full"
         onChange={(e) => setFirstName(e.target.value)}
+        value={firstName}
       />
       <input
         type="text"
         placeholder="Enter Last Name"
         className="input w-full mt-5"
         onChange={(e) => setLastname(e.target.value)}
+        value={lastName}
       />
       <input
         type="email"
         placeholder="Enter email"
         className="input w-full mt-5"
         onChange={(e) => setEmail(e.target.value)}
+        value={email}
       />
       <input
         type="text"
         placeholder="Department"
         className="input w-full mt-5"
         onChange={(e) => setDepartment(e.target.value)}
+        value={department}
       />
       <input
         type="password"
         placeholder="Enter password"
         className="input w-full mt-5"
         onChange={(e) => setPassword(e.target.value)}
+        value={password}
       />
       <input
         type="password"
         placeholder="Comfirm password"
         className="input w-full mt-5"
         onChange={(e) => setConfirmPassword(e.target.value)}
+        value={confirmPassword}
       />
       {error && <p className="mt-5 text-center text-red-400">{error}</p>}
       {success && (
