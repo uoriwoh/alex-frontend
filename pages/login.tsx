@@ -20,7 +20,7 @@ export default function Login() {
     }
 
     const state = {
-      email,
+      email: email.toLocaleLowerCase(),
       password,
     };
 

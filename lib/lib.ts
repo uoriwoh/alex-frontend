@@ -1,5 +1,5 @@
 import { getCookie } from "cookies-next";
-export const baseurl = "https://news-feed-api-6f5f8106f92a.herokuapp.com/";
+export const baseurl = "http://localhost:3333/";
 
 type RegisterProps = {
   firstName: string;

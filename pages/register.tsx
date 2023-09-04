@@ -47,7 +47,7 @@ export default function Register() {
     const state = {
       firstName,
       lastName,
-      email,
+      email: email.toLocaleLowerCase(),
       department,
       password,
     };
